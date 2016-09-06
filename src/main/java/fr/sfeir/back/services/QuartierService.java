@@ -36,7 +36,7 @@ public class QuartierService {
 	}
 	
 	public Quartier create(Quartier quartier) {
-		if (repository.exists(Example.of(quartier))) {
+		if ( ! repository.exists(Example.of(quartier))) {
 			return repository.save(quartier);
 		}
 		throw new RuntimeException("create impossible");
