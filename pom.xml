@@ -13,6 +13,10 @@
 		<version>1.4.0.RELEASE</version>
 	</parent>
 
+	
+	
+
+
 	<dependencies>
 
 		<dependency>
@@ -109,6 +113,12 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>resources</directory>
+			</resource>
+		</resources>
+
 	</build>
 
 	<repositories>
