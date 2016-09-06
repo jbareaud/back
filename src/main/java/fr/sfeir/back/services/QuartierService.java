@@ -3,10 +3,11 @@ package fr.sfeir.back.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.sfeir.back.dao.QuartierDao;
+import fr.sfeir.back.dao.QuartierRepository;
 import fr.sfeir.back.entities.Quartier;
 
 @Service
@@ -14,26 +15,35 @@ import fr.sfeir.back.entities.Quartier;
 public class QuartierService {
 
 	@Autowired
-	private QuartierDao dao;
+	private QuartierRepository repository;
 	
 	public Quartier fetch(long id) {
-		return dao.fetch(id);
+		return repository.findOne(id);
 	}
 
 	public Quartier update(Quartier quartier) {
-		return dao.update(quartier);
+		if (repository.exists(Example.of(quartier))) {
+			return repository.save(quartier);
+		}
+		throw new RuntimeException("update impossible");
 	}
 
 	public void delete(long id) {
-		dao.delete(id);
+		if (repository.exists(id)) {
+			repository.delete(id);
+		}
+		throw new RuntimeException("delete impossible");
 	}
 	
 	public Quartier create(Quartier quartier) {
-		return dao.create(quartier);
+		if (repository.exists(Example.of(quartier))) {
+			return repository.save(quartier);
+		}
+		throw new RuntimeException("create impossible");
 	}
 	
 	public List<Quartier> all() {
-		return dao.all();
+		return repository.findAll();
 	}
 	
 }
