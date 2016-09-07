@@ -12,7 +12,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.google.common.collect.ImmutableList;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import fr.sfeir.back.Appli;
 import fr.sfeir.back.DatabaseTest;
 import fr.sfeir.back.entities.Point;
@@ -66,25 +65,22 @@ public class QuartierRepositoryTest {
 		}
 	}
 	
-//	@Test
+	@Test
 	public void removeQuartier() {
 		{
 			Quartier quartier = new Quartier()
-					.setId(2l)
-					.setNom("foo");
-			Quartier quartier2 = repository.save(quartier);
-//			System.out.println(quartier2);
+					.setNom("foo_test_remove");
+			repository.save(quartier);
 			repository.flush();
 		}
 		{
-			Quartier quartier = repository.findOne(2l);
-			System.out.println(quartier);
+			Quartier quartier = repository.findByNom("foo_test_remove").get(0);
 			Assert.assertNotNull(quartier);
-			repository.delete(2l);
+			repository.delete(quartier);
 		}
 		{
-			Quartier quartier = repository.findOne(2l);
-			Assert.assertNull(quartier);
+			List<Quartier> findByNom = repository.findByNom("foo_test_remove");
+			Assert.assertEquals(0, findByNom.size());
 		}
 	}
 	

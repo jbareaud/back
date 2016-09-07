@@ -15,7 +15,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@Profile("dev")
+@Profile("mysql")
 @EnableTransactionManagement
 public class DatabaseConfig {
 
