@@ -50,6 +50,7 @@ public class DatabaseConfig {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
 		transactionManager.setSessionFactory(sessionFactory().getObject());
 		return transactionManager;
+//		return new DataSourceTransactionManager(dataSource());
 	}
 
 }

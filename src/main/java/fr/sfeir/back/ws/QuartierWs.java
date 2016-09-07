@@ -57,6 +57,7 @@ public class QuartierWs {
 	@ApiOperation(value = "Créer un quartier", httpMethod = "POST")
 	@POST
 	public Response create(Quartier quartier) {
+		System.out.println(quartier);
 		return Response
 				.status(Status.OK)
 				.entity(service.create(quartier))
@@ -73,7 +74,6 @@ public class QuartierWs {
 		return Response
 				.status(Status.ACCEPTED)
 				.build();
-
 	}
 
 }
