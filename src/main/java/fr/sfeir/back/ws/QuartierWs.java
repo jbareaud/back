@@ -15,32 +15,32 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/quartiers")
-@Api
+@Api(consumes = "application/json", produces = "application/json", protocols = "http")
 public class QuartierWs {
 
 	@Autowired
 	private QuartierService service;
 
-	@ApiOperation(value = "Récupérer les quartiers")
+	@ApiOperation(value = "Récupérer les quartiers", httpMethod = "GET")
 	@ApiImplicitParam(name = "id", value =  "1", required = false)
 	@RequestMapping(method = RequestMethod.GET)
 	public Quartier select(@RequestParam(value = "id", defaultValue = "1") String idQuartier) {
 		return service.fetch(Long.parseLong(idQuartier));
 	}
 
-	@ApiOperation(value = "Mettre à jour un quartier")
+	@ApiOperation(value = "Mettre à jour un quartier", httpMethod = "POST")
 	@RequestMapping(method = RequestMethod.POST)
 	public void update(@RequestBody Quartier quartier) { 
 		service.update(quartier);
 	}
 
-	@ApiOperation(value = "Créer un quartier")
+	@ApiOperation(value = "Créer un quartier", httpMethod = "PUT")
 	@RequestMapping(method = RequestMethod.PUT)
 	public void create(@RequestBody Quartier quartier) {
 		service.create(quartier);
 	}
 
-	@ApiOperation(value = "Supprimer un quartier")
+	@ApiOperation(value = "Supprimer un quartier", httpMethod = "DELETE")
 	@RequestMapping(method = RequestMethod.DELETE)
 	public void delete(@RequestParam(value = "id", defaultValue = "1") String idQuartier) {
 		service.delete(Long.parseLong(idQuartier));
