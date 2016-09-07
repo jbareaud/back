@@ -33,8 +33,8 @@ public class QuartierRepositoryTest {
 						new Point()
 							.setId(1)
 							.setIdQuartier(1)
-							.setLat(0.123)
-							.setLng(0.987)
+							.setLatitude(0.123)
+							.setLongitude(0.987)
 						));
 		repository.save(quartier);
 	}

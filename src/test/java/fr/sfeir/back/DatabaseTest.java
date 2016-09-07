@@ -32,7 +32,6 @@ public class DatabaseTest {
 		sessionFactoryBean.setDataSource(dataSource());
 		sessionFactoryBean.setPackagesToScan("fr.sfeir.back");
 		Properties hibernateProperties = new Properties();
-//		hibernateProperties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
 		hibernateProperties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 		hibernateProperties.put("hibernate.show_sql", "true");
 		sessionFactoryBean.setHibernateProperties(hibernateProperties);

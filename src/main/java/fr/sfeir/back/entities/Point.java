@@ -28,11 +28,11 @@ public class Point {
 	
 	@NotNull
 	@Column(name="long")
-	private double lng;
+	private double longitude;
 
 	@NotNull
 	@Column(name="lat")
-	private double lat;
+	private double latitude;
 	
 	@Column(name="id_quartier")
 	private long idQuartier;

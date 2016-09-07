@@ -3,7 +3,6 @@ package fr.sfeir.back.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +21,7 @@ public class QuartierService {
 	}
 
 	public Quartier update(Quartier quartier) {
-		if (repository.exists(Example.of(quartier))) {
+		if (repository.exists(quartier.getId())) {
 			return repository.save(quartier);
 		}
 		throw new RuntimeException("update impossible");
@@ -36,7 +35,7 @@ public class QuartierService {
 	}
 	
 	public Quartier create(Quartier quartier) {
-		if ( ! repository.exists(Example.of(quartier))) {
+		if ( ! repository.exists(quartier.getId())) {
 			return repository.save(quartier);
 		}
 		throw new RuntimeException("create impossible");
