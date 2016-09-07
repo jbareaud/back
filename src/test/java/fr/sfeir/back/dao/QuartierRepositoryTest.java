@@ -14,13 +14,12 @@ import com.google.common.collect.ImmutableList;
 
 import fr.sfeir.back.Appli;
 import fr.sfeir.back.DatabaseTest;
-import fr.sfeir.back.entities.Point;
 import fr.sfeir.back.entities.Quartier;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {Appli.class, DatabaseTest.class})
 public class QuartierRepositoryTest {
-		
+
 	@Autowired
 	private QuartierRepository repository;
 	
@@ -29,13 +28,7 @@ public class QuartierRepositoryTest {
 		Quartier quartier = new Quartier()
 				.setId(1)
 				.setNom("test")
-				.setPoints(ImmutableList.of(
-						new Point()
-							.setId(1)
-							.setIdQuartier(1)
-							.setLatitude(0.123)
-							.setLongitude(0.987)
-						));
+				.setPoints(ImmutableList.of());
 		repository.save(quartier);
 	}
 	
@@ -71,7 +64,6 @@ public class QuartierRepositoryTest {
 			Quartier quartier = new Quartier()
 					.setNom("foo_test_remove");
 			repository.save(quartier);
-			repository.flush();
 		}
 		{
 			Quartier quartier = repository.findByNom("foo_test_remove").get(0);

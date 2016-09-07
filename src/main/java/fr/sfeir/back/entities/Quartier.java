@@ -2,7 +2,6 @@ package fr.sfeir.back.entities;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,7 +35,7 @@ public class Quartier {
 	@Column(name="nom_quartier")
 	private String nom;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="idQuartier", fetch=FetchType.EAGER)
+	@OneToMany( mappedBy="idQuartier", fetch=FetchType.EAGER)
 	private List<Point> points;
 
 }

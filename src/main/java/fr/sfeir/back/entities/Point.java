@@ -37,4 +37,8 @@ public class Point {
 	@Column(name="id_quartier")
 	private long idQuartier;
 	
+//	@ManyToOne
+//	@JoinColumn(name = "id_quartier")
+//	private Quartier quartier;
+	
 }
