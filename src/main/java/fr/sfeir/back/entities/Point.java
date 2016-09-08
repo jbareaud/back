@@ -23,7 +23,7 @@ public class Point {
 
 	@Id
 	@Column(name="id_point")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	@NotNull

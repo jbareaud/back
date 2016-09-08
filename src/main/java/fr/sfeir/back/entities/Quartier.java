@@ -28,7 +28,7 @@ public class Quartier {
 	
 	@Id
 	@Column(name="id_quartier")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	@NotNull

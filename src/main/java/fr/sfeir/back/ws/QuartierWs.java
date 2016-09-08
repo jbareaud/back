@@ -4,6 +4,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -39,7 +40,7 @@ public class QuartierWs {
 				.build();
 	}
 
-	@ApiOperation(value = "Récupérer les quartiers", httpMethod = "GET")
+	@ApiOperation(value = "Récupérer un quartier", httpMethod = "GET")
 	@GET
 	@Path("{quartierId}")
 	public Response getQuartier(@PathParam("quartierId") String quartierId) {
@@ -57,13 +58,21 @@ public class QuartierWs {
 	@ApiOperation(value = "Créer un quartier", httpMethod = "POST")
 	@POST
 	public Response create(Quartier quartier) {
-		System.out.println(quartier);
 		return Response
 				.status(Status.OK)
 				.entity(service.create(quartier))
 				.build();
 	}
 
+	@ApiOperation(value = "MAJ un quartier", httpMethod = "PUT")
+	@PUT
+	public Response maj(Quartier quartier) {
+		return Response
+				.status(Status.OK)
+				.entity(service.update(quartier))
+				.build();
+	}
+	
 	@ApiOperation(value = "Supprimer un quartier", httpMethod = "DELETE")
 	@DELETE
 	@Path("{quartierId}")

@@ -21,24 +21,15 @@ public class QuartierService {
 	}
 
 	public Quartier update(Quartier quartier) {
-		if (repository.exists(quartier.getId())) {
-			return repository.save(quartier);
-		}
-		throw new RuntimeException("update impossible");
+		return repository.save(quartier);
 	}
 
 	public void delete(long id) {
-		if (repository.exists(id)) {
-			repository.delete(id);
-		}
-		throw new RuntimeException("delete impossible");
+		repository.delete(id);
 	}
 	
 	public Quartier create(Quartier quartier) {
-		if ( ! repository.exists(quartier.getId())) {
-			return repository.save(quartier);
-		}
-		throw new RuntimeException("create impossible");
+		return repository.save(quartier);
 	}
 	
 	public List<Quartier> all() {
