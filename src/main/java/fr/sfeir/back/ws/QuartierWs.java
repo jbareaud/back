@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiOperation;
 @Path("/quartiers")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@Api(consumes = "application/json", produces = "application/json", protocols = "http")
+@Api(value = "quartiers")
 public class QuartierWs {
 
 	@Autowired

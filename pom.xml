@@ -57,20 +57,10 @@
 		<!-- Swagger  -->
 		<dependency>
 		    <groupId>io.swagger</groupId>
-		    <artifactId>swagger-core</artifactId>
+		    <artifactId>swagger-jersey2-jaxrs</artifactId>
 		    <version>1.5.10</version>
 		</dependency>
-		<dependency>
-		    <groupId>io.springfox</groupId>
-		    <artifactId>springfox-swagger2</artifactId>
-		    <version>2.4.0</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.webjars</groupId>
-		    <artifactId>swagger-ui</artifactId>
-		    <version>2.2.0</version>
-		</dependency>
-
+		
 		<!-- Utililtaires -->		
 		
 		<dependency>
