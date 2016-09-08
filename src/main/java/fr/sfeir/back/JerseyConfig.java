@@ -15,6 +15,7 @@ public class JerseyConfig extends ResourceConfig {
 
 		// http://localhost:8080/swagger.json
 		
+		register(CorsFilter.class);
 		register(QuartierWs.class);
 		register(SwaggerSerializers.class);
 
