@@ -12,7 +12,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,18 +19,25 @@ import fr.sfeir.back.entities.Quartier;
 import fr.sfeir.back.services.QuartierService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @Component
 @Path("/quartiers")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@Api(value = "quartiers")
+@Api("API des quartiers")
 public class QuartierWs {
 
 	@Autowired
 	private QuartierService service;
 
-	@ApiOperation(value = "Récupérer les quartiers", httpMethod = "GET")
+	@ApiOperation(value = "Récupérer les quartiers")
+	@ApiResponses(value = {
+		@ApiResponse(code = 200, response = Quartier.class, responseContainer = "List",
+				message = "Renvoit tous les quartiers connus")
+	})
 	@GET
 	public Response getQuartiers() {
 		return Response
@@ -40,22 +46,31 @@ public class QuartierWs {
 				.build();
 	}
 
-	@ApiOperation(value = "Récupérer un quartier", httpMethod = "GET")
+	@ApiOperation(value = "Récupérer un quartier")
+	@ApiResponses(value = {
+		@ApiResponse(code = 200, response = Quartier.class, message = "Quartier trouvé"),
+		@ApiResponse(code = 404, message = "Quartier inconnu")
+	})
 	@GET
 	@Path("{quartierId}")
-	public Response getQuartier(@PathParam("quartierId") String quartierId) {
-		if (!StringUtils.isEmpty(quartierId)) {
+	public Response getQuartier(
+			@ApiParam(value = "Id du quartier", required=true) @PathParam("quartierId") Long quartierId) {
+		Quartier quartier = service.fetch(quartierId);
+		if (quartier != null) {
 			return Response
 					.status(Status.OK)
-					.entity(service.fetch(Long.parseLong(quartierId)))
+					.entity(quartier)
 					.build();
 		}
 		return Response
-				.status(Status.NO_CONTENT)
+				.status(Status.NOT_FOUND)
 				.build();
 	}
 
-	@ApiOperation(value = "Créer un quartier", httpMethod = "POST")
+	@ApiOperation(value = "Créer un quartier")
+	@ApiResponses(value = {
+		@ApiResponse(code = 200, response = Quartier.class, message = "Quartier créé")
+	})
 	@POST
 	public Response create(Quartier quartier) {
 		return Response
@@ -64,7 +79,10 @@ public class QuartierWs {
 				.build();
 	}
 
-	@ApiOperation(value = "MAJ un quartier", httpMethod = "PUT")
+	@ApiOperation(value = "MAJ un quartier")
+	@ApiResponses(value = {
+		@ApiResponse(code = 200, response = Quartier.class, message = "Quartier mis à jour")
+	})
 	@PUT
 	public Response maj(Quartier quartier) {
 		return Response
@@ -73,15 +91,18 @@ public class QuartierWs {
 				.build();
 	}
 	
-	@ApiOperation(value = "Supprimer un quartier", httpMethod = "DELETE")
+	@ApiOperation(value = "Supprimer un quartier")
+	@ApiResponses(value = {
+		@ApiResponse(code = 204, message = "Quartier supprimé")
+	})
 	@DELETE
 	@Path("{quartierId}")
-	public Response delete(@PathParam("quartierId") String quartierId) {
-		if (!StringUtils.isEmpty(quartierId)) {
-			service.delete(Long.parseLong(quartierId));
-		}
+	public Response delete(
+			@ApiParam(value = "Id du quartier", required=true) @PathParam("quartierId") Long quartierId) {
+	
+		service.delete(quartierId);
 		return Response
-				.status(Status.ACCEPTED)
+				.status(Status.NO_CONTENT)
 				.build();
 	}
 

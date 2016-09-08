@@ -16,12 +16,12 @@ public class JerseyConfig extends ResourceConfig {
 		// http://localhost:8080/swagger.json
 		
 		register(CorsFilter.class);
-		register(QuartierWs.class);
 		register(SwaggerSerializers.class);
-
 		register(ApiListingResource.class);
+		register(QuartierWs.class);
+		
 		BeanConfig beanConfig = new BeanConfig();
-		beanConfig.setVersion("1.0.2");
+		beanConfig.setVersion("v1");
 		beanConfig.setSchemes(new String[] { "http" });
 		beanConfig.setHost("localhost:8080");
 		beanConfig.setBasePath("/");
