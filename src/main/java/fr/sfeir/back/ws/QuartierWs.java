@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import fr.sfeir.back.entities.Quartier;
-import fr.sfeir.back.services.QuartierService;
+import fr.sfeir.back.services.IQuartierService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -31,7 +31,7 @@ import io.swagger.annotations.ApiResponses;
 public class QuartierWs {
 
 	@Autowired
-	private QuartierService service;
+	private IQuartierService service;
 
 	@ApiOperation(value = "Récupérer les quartiers")
 	@ApiResponses(value = {

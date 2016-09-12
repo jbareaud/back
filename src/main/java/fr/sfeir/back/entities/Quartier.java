@@ -2,6 +2,7 @@ package fr.sfeir.back.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,15 +28,15 @@ import lombok.experimental.Accessors;
 public class Quartier {
 	
 	@Id
-	@Column(name="id_quartier")
+	@Column(name="id_quartier", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@NotNull
 	@Column(name="nom_quartier")
 	private String nom;
 	
-	@OneToMany( mappedBy="idQuartier", fetch=FetchType.EAGER)
+	@OneToMany( mappedBy="quartier", fetch=FetchType.EAGER, cascade = CascadeType.ALL )
 	private List<Point> points;
 
 }

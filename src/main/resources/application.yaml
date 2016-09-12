@@ -1,0 +1,24 @@
+logging:
+   level:
+      org:
+         springframework:
+            web: DEBUG
+         hibernate: ERROR
+spring:
+   jpa:
+      hibernate:
+         naming:
+            implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+            physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+db:
+   driver: com.mysql.jdbc.Driver
+   url: jdbc:mysql://localhost:3306/controle_loyers
+   username: root
+   password: controlerDesLoyers7;
+hibernate:
+   dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+   show_sql: true
+   hbm2ddl:
+      auto: update
+entitymanager:
+   packagesToScan: fr.sfeir.back

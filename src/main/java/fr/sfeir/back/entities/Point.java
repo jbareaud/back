@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -22,23 +24,20 @@ import lombok.experimental.Accessors;
 public class Point {
 
 	@Id
-	@Column(name="id_point")
+	@Column(name="id_point", unique = true, nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@NotNull
-	@Column(name="long")
-	private double longitude;
+	@Column(name="lng")
+	private Double longitude;
 
 	@NotNull
 	@Column(name="lat")
-	private double latitude;
+	private Double latitude;
 	
-	@Column(name="id_quartier")
-	private long idQuartier;
-	
-//	@ManyToOne
-//	@JoinColumn(name = "id_quartier")
-//	private Quartier quartier;
+	@ManyToOne 
+	@JoinColumn(name = "id_quartier", nullable = false, updatable = false, insertable =  true)
+	private Quartier quartier;
 	
 }
