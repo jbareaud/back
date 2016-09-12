@@ -11,7 +11,7 @@ import fr.sfeir.back.entities.Quartier;
 
 @Service
 @Transactional
-public class QuartierService implements IQuartierService {
+class QuartierService implements IQuartierService {
 
 	@Autowired
 	private QuartierRepository repository;
