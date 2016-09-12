@@ -12,9 +12,8 @@ public class PointConverter implements Converter<Point, PointBean> {
 	@Override
 	public PointBean convert(Point source) {
 		return new PointBean()
-				.setLatitude(source.getLatitude().toString())
-				.setLongitude(source.getLongitude().toString());
+				.setLatitude(source.getLatitude())
+				.setLongitude(source.getLongitude());
 	}
-
 
 }

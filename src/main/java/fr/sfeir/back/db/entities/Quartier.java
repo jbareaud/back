@@ -18,7 +18,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
-
 @Entity
 @Table(name="quartier")
 @Data

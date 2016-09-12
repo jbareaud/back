@@ -93,8 +93,8 @@ implements CommandLineRunner
 								.stream()
 								.map(p -> 
 									new Point()
-										.setLatitude(Double.parseDouble(p.getLatitude()))
-										.setLongitude(Double.parseDouble(p.getLongitude()))
+										.setLatitude(p.getLatitude())
+										.setLongitude(p.getLongitude())
 										.setQuartier(quartier)
 								)
 								.collect(Collectors.toList())

@@ -111,7 +111,6 @@ public class QuartierWs {
 	@Path("{quartierId}")
 	public Response delete(
 			@ApiParam(value = "Id du quartier", required=true) @PathParam("quartierId") Long quartierId) {
-	
 		quartierService.delete(quartierId);
 		return Response
 				.status(Status.NO_CONTENT)

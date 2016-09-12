@@ -12,11 +12,11 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 public class PointBean {
 
-	private String  latitude;
-    private String  longitude;	
+	private Double  latitude;
+    private Double  longitude;	
 
 	@JsonCreator
-	public PointBean(@JsonProperty("latitude") String latitude, @JsonProperty("longitude") String longitude ) {
+	public PointBean(@JsonProperty("latitude") Double latitude, @JsonProperty("longitude") Double longitude ) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
