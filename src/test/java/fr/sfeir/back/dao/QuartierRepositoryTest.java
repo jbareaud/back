@@ -29,16 +29,19 @@ public class QuartierRepositoryTest {
 	
 	@Before
 	public void init() {
-		
+
+		Quartier quartier = new Quartier()
+				.setNom("test");
+
 		List<Point> list = new ArrayList<Point>();
 		list.add(new Point()
 			.setLatitude(1.234)
-			.setLongitude(3.675)	
+			.setLongitude(3.675)
+			.setQuartier(quartier)
 		);
 		
-		Quartier quartier = new Quartier()
-				.setNom("test")
-				.setPoints(list);
+		quartier.setPoints(list);
+		
 		repository.save(quartier);
 	}
 	
@@ -52,7 +55,7 @@ public class QuartierRepositoryTest {
 	public void getQuartier() {
 		Quartier quartier = repository.findByNom("test").get(0);
 //		Hibernate.initialize(quartier.getPoints());
-		System.out.println(quartier);
+//		System.out.println(quartier);
 		Assert.assertNotNull(quartier);
 		Assert.assertEquals(quartier.getNom(), "test");
 	}
