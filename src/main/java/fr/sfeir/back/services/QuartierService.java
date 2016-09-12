@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.sfeir.back.db.dao.QuartierRepository;
 import fr.sfeir.back.db.entities.Quartier;
+import fr.sfeir.back.db.repositories.QuartierRepository;
 
 @Service
 @Transactional

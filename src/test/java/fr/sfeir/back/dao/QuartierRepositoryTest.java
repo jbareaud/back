@@ -15,9 +15,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.sfeir.back.AppliBack;
 import fr.sfeir.back.DatabaseTest;
-import fr.sfeir.back.db.dao.QuartierRepository;
 import fr.sfeir.back.db.entities.Point;
 import fr.sfeir.back.db.entities.Quartier;
+import fr.sfeir.back.db.repositories.QuartierRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {AppliBack.class, DatabaseTest.class})

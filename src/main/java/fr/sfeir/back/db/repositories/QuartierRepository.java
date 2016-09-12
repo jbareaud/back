@@ -1,4 +1,4 @@
-package fr.sfeir.back.db.dao;
+package fr.sfeir.back.db.repositories;
 
 import java.util.List;
 
