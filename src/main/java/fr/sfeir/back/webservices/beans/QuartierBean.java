@@ -1,4 +1,4 @@
-package fr.sfeir.back.beans;
+package fr.sfeir.back.webservices.beans;
 
 import java.util.List;
 

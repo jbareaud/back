@@ -8,9 +8,9 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import fr.sfeir.back.beans.PointBean;
-import fr.sfeir.back.beans.QuartierBean;
-import fr.sfeir.back.entities.Quartier;
+import fr.sfeir.back.db.entities.Quartier;
+import fr.sfeir.back.webservices.beans.PointBean;
+import fr.sfeir.back.webservices.beans.QuartierBean;
 
 @Component
 public class QuartierConverter implements Converter<Quartier, QuartierBean>{

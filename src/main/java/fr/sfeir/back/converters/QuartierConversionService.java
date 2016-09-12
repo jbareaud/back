@@ -3,8 +3,8 @@ package fr.sfeir.back.converters;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.TypeDescriptor;
 
-import fr.sfeir.back.beans.QuartierBean;
-import fr.sfeir.back.entities.Quartier;
+import fr.sfeir.back.db.entities.Quartier;
+import fr.sfeir.back.webservices.beans.QuartierBean;
 
 //@Service
 //@Qualifier("convertQuartiers")

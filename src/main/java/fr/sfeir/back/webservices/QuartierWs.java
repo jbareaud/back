@@ -1,4 +1,4 @@
-package fr.sfeir.back.ws;
+package fr.sfeir.back.webservices;
 
 import java.util.stream.Collectors;
 
@@ -18,9 +18,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Component;
 
-import fr.sfeir.back.beans.QuartierBean;
-import fr.sfeir.back.entities.Quartier;
+import fr.sfeir.back.db.entities.Quartier;
 import fr.sfeir.back.services.IQuartierService;
+import fr.sfeir.back.webservices.beans.QuartierBean;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

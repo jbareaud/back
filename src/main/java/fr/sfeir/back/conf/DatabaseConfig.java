@@ -1,4 +1,4 @@
-package fr.sfeir.back;
+package fr.sfeir.back.conf;
 
 import java.util.Properties;
 

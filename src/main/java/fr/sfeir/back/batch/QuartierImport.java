@@ -12,9 +12,9 @@ import org.springframework.core.io.ResourceLoader;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import fr.sfeir.back.beans.QuartierBean;
-import fr.sfeir.back.entities.Point;
-import fr.sfeir.back.entities.Quartier;
+import fr.sfeir.back.db.entities.Point;
+import fr.sfeir.back.db.entities.Quartier;
+import fr.sfeir.back.webservices.beans.QuartierBean;
 
 //@Component
 //@Transactional

@@ -1,4 +1,4 @@
-package fr.sfeir.back.entities;
+package fr.sfeir.back.db.entities;
 
 import java.util.List;
 

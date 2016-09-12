@@ -2,7 +2,7 @@ package fr.sfeir.back.services;
 
 import java.util.List;
 
-import fr.sfeir.back.entities.Quartier;
+import fr.sfeir.back.db.entities.Quartier;
 
 public interface IQuartierService {
 

@@ -1,4 +1,4 @@
-package fr.sfeir.back.beans;
+package fr.sfeir.back.webservices.beans;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

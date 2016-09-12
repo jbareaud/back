@@ -1,9 +1,9 @@
-package fr.sfeir.back;
+package fr.sfeir.back.conf;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
-import fr.sfeir.back.ws.QuartierWs;
+import fr.sfeir.back.webservices.QuartierWs;
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;
 import io.swagger.jaxrs.listing.SwaggerSerializers;
