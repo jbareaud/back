@@ -11,6 +11,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @NoArgsConstructor
 public class PointBean {
+
 	private String  latitude;
     private String  longitude;	
 

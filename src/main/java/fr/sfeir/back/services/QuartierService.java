@@ -33,14 +33,6 @@ class QuartierService implements IQuartierService {
 	}
 	
 	public List<Quartier> all() {
-//		List<Quartier> all = repository.findAll();
-//		all
-//			.stream()
-//			.forEach(q  -> {		
-//				Hibernate.initialize(q.getPoints());
-//
-//			});
-//		return all;
 		return repository.findAll();
 	}
 	

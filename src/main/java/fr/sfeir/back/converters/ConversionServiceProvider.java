@@ -35,7 +35,6 @@ public class ConversionServiceProvider {
 		converters.add(pointConverter);
 		converters.add(quartierConverter);
 		return converters;
-
 	}
 
 }

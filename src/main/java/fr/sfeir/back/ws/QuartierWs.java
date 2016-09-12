@@ -39,7 +39,6 @@ public class QuartierWs {
 
 	@Autowired
 	private ConversionService conversionService;
-
 	
 	@ApiOperation(value = "Récupérer les quartiers")
 	@ApiResponses(value = {

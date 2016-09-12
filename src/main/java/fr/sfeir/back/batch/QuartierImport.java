@@ -33,9 +33,7 @@ implements CommandLineRunner
 	
 	@Override
 	public void run(String... args) throws Exception {
-
 		displaySql(map(read()));
-		
 	}
 	
 	private void displaySql(List<Quartier> list) {
