@@ -1,5 +1,7 @@
 package fr.sfeir.back.ws;
 
+import java.util.stream.Collectors;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -13,8 +15,10 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Component;
 
+import fr.sfeir.back.beans.QuartierBean;
 import fr.sfeir.back.entities.Quartier;
 import fr.sfeir.back.services.IQuartierService;
 import io.swagger.annotations.Api;
@@ -31,35 +35,44 @@ import io.swagger.annotations.ApiResponses;
 public class QuartierWs {
 
 	@Autowired
-	private IQuartierService service;
+	private IQuartierService quartierService;
 
+	@Autowired
+	private ConversionService conversionService;
+
+	
 	@ApiOperation(value = "Récupérer les quartiers")
 	@ApiResponses(value = {
-		@ApiResponse(code = 200, response = Quartier.class, responseContainer = "List",
+		@ApiResponse(code = 200, response = QuartierBean.class, responseContainer = "List",
 				message = "Renvoit tous les quartiers connus")
 	})
 	@GET
 	public Response getQuartiers() {
 		return Response
 				.status(Status.OK)
-				.entity(service.all())
+				.entity(quartierService
+						.all()
+						.stream()
+						.map(quartier -> conversionService.convert(quartier, QuartierBean.class))
+						.collect(Collectors.toList())
+				)
 				.build();
 	}
 
 	@ApiOperation(value = "Récupérer un quartier")
 	@ApiResponses(value = {
-		@ApiResponse(code = 200, response = Quartier.class, message = "Quartier trouvé"),
+		@ApiResponse(code = 200, response = QuartierBean.class, message = "Quartier trouvé"),
 		@ApiResponse(code = 404, message = "Quartier inconnu")
 	})
 	@GET
 	@Path("{quartierId}")
 	public Response getQuartier(
 			@ApiParam(value = "Id du quartier", required=true) @PathParam("quartierId") Long quartierId) {
-		Quartier quartier = service.fetch(quartierId);
+		Quartier quartier = quartierService.fetch(quartierId);
 		if (quartier != null) {
 			return Response
 					.status(Status.OK)
-					.entity(quartier)
+					.entity(conversionService.convert(quartier, QuartierBean.class))
 					.build();
 		}
 		return Response
@@ -75,7 +88,7 @@ public class QuartierWs {
 	public Response create(Quartier quartier) {
 		return Response
 				.status(Status.OK)
-				.entity(service.create(quartier))
+				.entity(quartierService.create(quartier))
 				.build();
 	}
 
@@ -87,7 +100,7 @@ public class QuartierWs {
 	public Response maj(Quartier quartier) {
 		return Response
 				.status(Status.OK)
-				.entity(service.update(quartier))
+				.entity(quartierService.update(quartier))
 				.build();
 	}
 	
@@ -100,7 +113,7 @@ public class QuartierWs {
 	public Response delete(
 			@ApiParam(value = "Id du quartier", required=true) @PathParam("quartierId") Long quartierId) {
 	
-		service.delete(quartierId);
+		quartierService.delete(quartierId);
 		return Response
 				.status(Status.NO_CONTENT)
 				.build();

@@ -6,10 +6,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
-import lombok.ToString;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 @Data
-@ToString 
+@Accessors(chain = true)
+@NoArgsConstructor
 public class QuartierBean {
 
 	private String id;
