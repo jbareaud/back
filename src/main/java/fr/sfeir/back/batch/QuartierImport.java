@@ -9,15 +9,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import fr.sfeir.back.beans.QuartierBean;
 import fr.sfeir.back.entities.Point;
 import fr.sfeir.back.entities.Quartier;
-import lombok.Data;
-import lombok.ToString;
 
 //@Component
 //@Transactional
@@ -78,14 +75,14 @@ implements CommandLineRunner
 		
 	}
 
-	private List<JsonQuartier> read() throws Exception {
+	private List<QuartierBean> read() throws Exception {
 		Resource resource = resourceLoader.getResource(jsonDataFile);
 		File file = resource.getFile();
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(file, new TypeReference<List<JsonQuartier>>(){});
+        return mapper.readValue(file, new TypeReference<List<QuartierBean>>(){});
 	}
 	
-	private List<Quartier> map(List<JsonQuartier> quartiers) {
+	private List<Quartier> map(List<QuartierBean> quartiers) {
 		return quartiers
 			.stream()
 			.map(q ->  {
@@ -114,30 +111,4 @@ implements CommandLineRunner
 			return i++;
 		}
 	}
-	
-	@Data
-	@ToString 
-	public static class JsonQuartier {
-		private String id;
-		private List<JsonPoint> path;
-		
-		@JsonCreator
-		public JsonQuartier(@JsonProperty("id") String id, @JsonProperty("path") List<JsonPoint> path) {
-			this.id = id;
-			this.path = path;
-		}
-	}
-	
-	@Data
-	public static class JsonPoint {
-		private String  latitude;
-	    private String  longitude;	
-
-		@JsonCreator
-		public JsonPoint(@JsonProperty("latitude") String latitude, @JsonProperty("longitude") String longitude ) {
-			this.latitude = latitude;
-			this.longitude = longitude;
-		}
-	}
-	
 }
