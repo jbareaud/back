@@ -19,6 +19,7 @@ import fr.sfeir.back.entities.Quartier;
 //@Component
 //@Transactional
 //@PropertySource(value={"classpath:application.yaml"})
+@Deprecated // classe one-shot
 public class QuartierImport 
 implements CommandLineRunner 
 {

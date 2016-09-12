@@ -13,13 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import fr.sfeir.back.Appli;
+import fr.sfeir.back.AppliBack;
 import fr.sfeir.back.DatabaseTest;
 import fr.sfeir.back.entities.Point;
 import fr.sfeir.back.entities.Quartier;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = {Appli.class, DatabaseTest.class})
+@SpringBootTest(classes = {AppliBack.class, DatabaseTest.class})
 @Transactional
 public class QuartierRepositoryTest {
 
